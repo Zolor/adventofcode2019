@@ -13,7 +13,7 @@ then add together all the fuel values.
 
 What is the sum of the fuel requirements for all of the modules on your spacecraft?
 
-Bonus:
+Bonus 2nd star:
 
 What is the sum of the fuel requirements for all of the modules on your spacecraft when also taking into account the mass of the added fuel?
 (Calculate the fuel requirements for each module separately, then add them all up at the end.)
@@ -30,6 +30,7 @@ def fuel_calc(input):
 with open(filepath) as fi:
     for cnt, line in enumerate(fi):
         calc = (fuel_calc(int(line)))
-        sum += calc
+        while calc > 0:
+            sum += calc
+            calc = (fuel_calc(calc))
     print(sum)
-
