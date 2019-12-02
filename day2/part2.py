@@ -8,9 +8,12 @@ intcode = [1,0,0,3,1,1,2,3,1,3,4,3,1,5,0,3,2,1,6,19,1,9,19,23,2,23,10,27,1,27,5,
 
 test_code = [1,9,10,3,2,3,11,0,99,30,40,50]
 
+noun = 12
+verb = 2
+
 def restore_intcode(list):
-	list[1] = 12
-	list[2] = 2
+	list[1] = noun
+	list[2] = verb
 
 def intcode_program(list):
 	start_pos = 0
