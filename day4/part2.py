@@ -2,14 +2,15 @@
 Two adjacent digits are the same (like 22 in 122345).
 Going from left to right, the digits never decrease; they only ever increase or stay the same (like 111123 or 135679).
 '''
-lista = list(range(100, 200))
-#lista = list(range(109165, 576723))
+#lista = list(range(1000, 1200))
+lista = list(range(109165, 576723))
 def code_cracker(lista):
     resultat = []
     for i in lista:
         n = str(i)
         for k, j in enumerate(n):
-            if (k < len(n) - 1) and (j == n[k + 1]) and (j != n[k + 2]):
+            if ((k < len(n) - 1) and (j == n[k + 1])) and ((k < len(n) - 2) and (j != n[k + 2]) or (k > 0) and (j != n[k - 1])):
+#                print(i)
                 resultat.append(i)
                 break
 #    print(resultat)
