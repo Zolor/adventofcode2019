@@ -4,7 +4,6 @@ Going from left to right, the digits never decrease; they only ever increase or 
 '''
 #lista = list(range(150000, 159999))
 lista = list(range(109165, 576723))
-resultat = []
 samling = {}
 def code_cracker(number):
 	n = str(number)
