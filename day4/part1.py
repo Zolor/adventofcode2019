@@ -9,7 +9,7 @@ def code_cracker(lista):
     for i in lista:
         n = str(i)
         for k, j in enumerate(n):
-            if (k < len(n) - 1) and (j == n[k + 1]) and (j != n[k + 2]):
+            if (k < len(n) - 1) and (j == n[k + 1]):
                 resultat.append(i)
                 break
 #    print(resultat)
