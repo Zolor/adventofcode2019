@@ -22,23 +22,21 @@ def loop(input):
 	total = 0
 	san_travel = []
 	you_travel = []
-	for planet in planets:
-		if planet == "YOU":
-			while planet in planets:
-				you_travel.append(planet)
-				planet = planets[planet]
-		print(you_travel)
-	for planet in planets:
-		if planet == "SAN":
-			while planet in planets:
-				san_travel.append(planet)
-				planet = planets[planet]
-		print(san_travel)
+	planet = planets["YOU"]
+	while planet in planets:
+		you_travel.append(planet)
+		planet = planets[planet]
+	print(you_travel)
+	planet = planets["SAN"]
+	while planet in planets:
+		san_travel.append(planet)
+		planet = planets[planet]
+	print(san_travel)
 	dups = set(san_travel) & set(you_travel)
 	for d in dups:
 		san_travel.remove(d)
 		you_travel.remove(d)
-	total = len(san_travel) + len(you_travel) - 2
+	total = len(san_travel) + len(you_travel)
 	print(you_travel)
 	print(san_travel)
 	return total
