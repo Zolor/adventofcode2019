@@ -22,14 +22,36 @@ def intcode_program(list):
 			list[list[start_pos + 3]] = parameter(instr, 1) * parameter(instr, 2)
 			start_pos += 4
 		elif opcode == 3:
-			list[list[start_pos + 1]] = 1 #Hardcoded input
+			list[list[start_pos + 1]] = 5 #Hardcoded input
 			start_pos += 2
 		elif opcode == 4:
 			print(parameter(instr, 1))
 			start_pos += 2
+		elif opcode == 5:
+			if parameter(instr, 1):
+				start_pos = parameter(instr, 2)
+			else:
+				start_pos += 3
+		elif opcode == 6:
+			if not parameter(instr, 1):
+				start_pos = parameter(instr, 2)
+			else:
+				start_pos += 3
+		elif opcode == 7:
+			if parameter(instr, 1) < parameter(instr, 2):
+				list[list[start_pos + 3]] = 1
+			else:
+				list[list[start_pos + 3]] = 0
+			start_pos += 4
+		elif opcode == 8:
+			if parameter(instr, 1) == parameter(instr, 2):
+				list[list[start_pos + 3]] = 1
+			else:
+				list[list[start_pos + 3]] = 0
+			start_pos += 4
 		elif opcode == 99:
 			return list
 		else:
 			raise AssertionError(opcode)
 
-print(intcode_program(intcode))
+intcode_program(intcode)
