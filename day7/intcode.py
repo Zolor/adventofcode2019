@@ -23,7 +23,7 @@ def intcode_program(list, input_value):
 			start_pos += 2
 			input_counter += 1
 		elif opcode == 4:
-			return(parameter(instr, 1))
+			return(list, parameter(instr, 1))-.
 			start_pos += 2
 		elif opcode == 5:
 			if parameter(instr, 1):
