@@ -7,18 +7,10 @@ def intcode_program(list, input_value, start_pos):
 			return list[start_pos + x]
 		else:
 			raise NotImplementedError(mode)
-#	if state == None:
-#		#print("State is None! " + str(state))
-#		input_counter = 0
-#		start_pos = 0
-#	else:
 	input_counter = 0
-	print("Before intcode: " + str(start_pos))
-#		start_pos = state
-#		print("State! " + str(start_pos))
 	while start_pos < len(list):
 		instr = list[start_pos]
-		opcode = list[start_pos] % 100
+		opcode = instr % 100
 		if opcode == 1:
 			list[list[start_pos + 3]] = parameter(instr, 1) + parameter(instr, 2)
 			start_pos += 4
@@ -30,9 +22,9 @@ def intcode_program(list, input_value, start_pos):
 			start_pos += 2
 			input_counter += 1
 		elif opcode == 4:
+			tmp = parameter(instr, 1)
 			start_pos += 2
-			print("After intcode program: " + str(start_pos))
-			return(parameter(instr, 1), list, start_pos)
+			return(tmp, list, start_pos)
 		elif opcode == 5:
 			if parameter(instr, 1):
 				start_pos = parameter(instr, 2)
@@ -56,6 +48,6 @@ def intcode_program(list, input_value, start_pos):
 				list[list[start_pos + 3]] = 0
 			start_pos += 4
 		elif opcode == 99:
-			return False
+			return(None, list, start_pos)
 		else:
 			raise AssertionError(opcode)
