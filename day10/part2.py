@@ -25,7 +25,13 @@ def astroid_counter(coords):
 				tmp_counts.add(mydegrees)
 		if len(degrees_list) < len(tmp_counts):
 			degrees_list = tmp_counts.copy()
-	return(degrees_list)
+			best_asteroid = coord
+	return(degrees_list, best_asteroid)
 
-degrees_list = len(astroid_counter(coords))
+#def asteroid_destroyer(degrees_list, best_asteroid):
+
+
+degrees_list, best_asteroid = astroid_counter(coords)
+degrees_list = list(degrees_list)
+degrees_list.sort()
 print(degrees_list)
