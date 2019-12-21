@@ -25,6 +25,8 @@ def astroid_counter(coords):
 				tmp_counts.add(mydegrees)
 		if len(degrees_list) < len(tmp_counts):
 			degrees_list = tmp_counts.copy()
+			print(coord)
+			print(len(degrees_list))
 	return(degrees_list)
 
 degrees_list = len(astroid_counter(coords))
