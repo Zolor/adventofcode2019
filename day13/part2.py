@@ -6,7 +6,7 @@ with open('input.txt') as input:
 		code = [int(part) for part in i.strip().split(',')]
 		intcode_dict = collections.defaultdict(int, enumerate(code))
 
-output = intcode_program(intcode_dict)
-count = 0
-output = output[2::3]
+output, lista, start_pos, rel_base = intcode_program(intcode_dict)
+print(output)
+print(lista)
 

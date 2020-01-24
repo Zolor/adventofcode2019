@@ -1,4 +1,5 @@
-def intcode_program(lista):
+def intcode_program(lista, start_pos = 0, rel_base = 0):
+	tmp = []
 	def parameter(instr, x):
 		mode = instr // (10 ** (x + 1)) % 10
 		if mode == 0:
@@ -18,10 +19,6 @@ def intcode_program(lista):
 			return rel_base + lista[start_pos + x]
 		else:
 			raise NotImplementedError(mode)
-
-	start_pos = 0
-	rel_base = 0
-	tmp = []
 	while start_pos < len(lista):
 		instr = lista[start_pos]
 		opcode = instr % 100
@@ -32,12 +29,13 @@ def intcode_program(lista):
 			lista[store(instr, 3)] = parameter(instr, 1) * parameter(instr, 2)
 			start_pos += 4
 		elif opcode == 3:
-			lista[store(instr, 1)] = 2 #input value
+			lista[store(instr, 1)] = 0 #input value
 			start_pos += 2
 		elif opcode == 4:
 			tmp.append(parameter(instr, 1))
+			#tmp = parameter(instr, 1)
 			start_pos += 2
-			#print(tmp)
+			#return(tmp, lista, start_pos, rel_base)
 		elif opcode == 5:
 			if parameter(instr, 1):
 				start_pos = parameter(instr, 2)
@@ -64,6 +62,6 @@ def intcode_program(lista):
 			rel_base += parameter(instr, 1)
 			start_pos += 2
 		elif opcode == 99:
-			return(tmp)
+			return(tmp, lista, start_pos, rel_base)
 		else:
 			raise AssertionError(opcode)
